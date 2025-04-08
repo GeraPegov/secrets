@@ -1,0 +1,19 @@
+<html>
+<head>
+    <title>Отправить секрет</title>
+</head>
+<body>
+    <h1>Форма для секрета</h1>
+    <form action="/secret" method="post">
+        <div>
+            <label for="secret">Ваш секрет:</label>
+            <textarea id="secret" name="secret" required></textarea>
+        </div>
+        <div>
+            <label for="passphrase">Пароль:</label>
+            <input type="text" id="passphrase" name="passphrase" required>
+        </div>
+        <button type="submit">Отправить</button>
+    </form>
+</body>
+</html>
