@@ -1,5 +1,7 @@
-ERROR:fastapi:Form data requires "python-multipart" to be installed. 
-You can install "python-multipart" with: 
-
-pip install python-multipart
-
+2025-04-10 18:11:10,619 - programm - INFO - create secret gAAAAABn99-OSwBt7Nnb_1aLlqKnTrLIszRPolJiIn5d6F3b0ZpVN5sYr6Vv0FlY1qQlRlsVzMhqfIbcfb3VYru2G97oQmhBeg==
+2025-04-10 18:11:10,619 - programm - INFO - add Harry Potter it is gAAAAABn99-OSwBt7Nnb_1aLlqKnTrLIszRPolJiIn5d6F3b0ZpVN5sYr6Vv0FlY1qQlRlsVzMhqfIbcfb3VYru2G97oQmhBeg==
+2025-04-10 18:11:19,609 - programm - INFO - OPEN BD DELETE
+2025-04-10 18:11:19,622 - programm - INFO - WARNING HASH RealDictRow({'passphrase': '{PBKDF2-SHA256}29000$uZdSSqkVwvgfA6A05hwDgA$mg8KghQXyQcJXpiXZGskBqYd.f9SdRYbbMCp7CU4nyU'})
+2025-04-10 18:11:23,236 - programm - INFO - OPEN BD DELETE
+2025-04-10 18:11:23,249 - programm - INFO - WARNING HASH RealDictRow({'passphrase': '{PBKDF2-SHA256}29000$uZdSSqkVwvgfA6A05hwDgA$mg8KghQXyQcJXpiXZGskBqYd.f9SdRYbbMCp7CU4nyU'})
+2025-04-10 18:11:32,300 - programm - INFO - OPEN BD DELETE

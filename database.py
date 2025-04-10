@@ -2,20 +2,16 @@ from contextlib import contextmanager
 import psycopg2
 from psycopg2.extras import RealDictCursor
 from fastapi import HTTPException
+import toml
+with open("config.toml") as f:  
+    data = toml.load(f)
 
-connection_db = {
-    'dbname': 'mydatabase',
-    'user': 'postgres',
-    'password': '2710',
-    'host': 'localhost',
-    'port': '5432'
-}
 
 @contextmanager
 def start_table():
     conn = None
     try:
-        conn = psycopg2.connect(**connection_db, cursor_factory=RealDictCursor)
+        conn = psycopg2.connect(dbname=data['dbname'], user=data['user'], password=data['password'], host=data['host'], port=data['port'], cursor_factory=RealDictCursor)
         yield conn 
     except psycopg2.Error as e:
         raise HTTPException(status_code=500, detail=f'Databasae error: {e}')
@@ -24,6 +20,5 @@ def start_table():
             conn.close()
 
 def get_db():
-    """Функция-зависимость для FastAPI"""
     with start_table() as conn:
         yield conn
