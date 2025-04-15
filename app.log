@@ -5,3 +5,89 @@
 2025-04-10 18:11:23,236 - programm - INFO - OPEN BD DELETE
 2025-04-10 18:11:23,249 - programm - INFO - WARNING HASH RealDictRow({'passphrase': '{PBKDF2-SHA256}29000$uZdSSqkVwvgfA6A05hwDgA$mg8KghQXyQcJXpiXZGskBqYd.f9SdRYbbMCp7CU4nyU'})
 2025-04-10 18:11:32,300 - programm - INFO - OPEN BD DELETE
+2025-04-15 15:01:13,682 - programm - INFO - create secret gAAAAABn_kqJikHIZMWuAAspkU2VL5I80YNUthlaf92tMzpNPiZanFXGAQfEd41hjCyGpflIMmtsAqvQIobipuN0_aXfeI2a7w==
+2025-04-15 15:01:13,691 - programm - INFO - add qwe it is gAAAAABn_kqJikHIZMWuAAspkU2VL5I80YNUthlaf92tMzpNPiZanFXGAQfEd41hjCyGpflIMmtsAqvQIobipuN0_aXfeI2a7w==
+2025-04-15 15:28:08,288 - programm - INFO - open db for post secret
+2025-04-15 15:28:08,301 - programm - INFO - create secret gAAAAABn_lDYWnLmFFcKFWdhJvssGHKdYyomsmlvgP2wi3GjgR9GucSd9aXPiiHP7xY5972vaau3XO4rCzEczsPNG_9wg3jCsw==
+2025-04-15 15:28:08,302 - programm - INFO - Add secret_hash in data base
+2025-04-15 15:28:12,585 - programm - INFO - open db for get secret
+2025-04-15 15:29:01,165 - programm - INFO - open db for get secret
+2025-04-15 15:29:01,167 - programm - INFO - None this is take out database
+2025-04-15 15:29:01,167 - programm - WARNING - 2 not found with key
+2025-04-15 15:31:32,178 - programm - INFO - open db for get secret
+2025-04-15 15:31:32,180 - programm - INFO - RealDictRow({'secret': 'gAAAAABn_lDYWnLmFFcKFWdhJvssGHKdYyomsmlvgP2wi3GjgR9GucSd9aXPiiHP7xY5972vaau3XO4rCzEczsPNG_9wg3jCsw=='}) this is take out database
+2025-04-15 15:31:32,181 - programm - INFO - end for show secret
+2025-04-15 15:33:55,055 - programm - INFO - open db for get secret
+2025-04-15 15:33:55,056 - programm - INFO - RealDictRow({'secret': 'gAAAAABn_lDYWnLmFFcKFWdhJvssGHKdYyomsmlvgP2wi3GjgR9GucSd9aXPiiHP7xY5972vaau3XO4rCzEczsPNG_9wg3jCsw=='}) this is take out database
+2025-04-15 15:33:55,058 - programm - INFO - end for show secret
+2025-04-15 15:33:58,092 - programm - INFO - open db for get secret
+2025-04-15 15:33:58,094 - programm - INFO - RealDictRow({'secret': 'gAAAAABn_lDYWnLmFFcKFWdhJvssGHKdYyomsmlvgP2wi3GjgR9GucSd9aXPiiHP7xY5972vaau3XO4rCzEczsPNG_9wg3jCsw=='}) this is take out database
+2025-04-15 15:33:58,094 - programm - INFO - end for show secret
+2025-04-15 15:34:15,526 - programm - INFO - open db for get secret
+2025-04-15 15:34:15,527 - programm - INFO - RealDictRow({'secret': 'gAAAAABn_lDYWnLmFFcKFWdhJvssGHKdYyomsmlvgP2wi3GjgR9GucSd9aXPiiHP7xY5972vaau3XO4rCzEczsPNG_9wg3jCsw=='}) this is take out database
+2025-04-15 15:34:15,528 - programm - INFO - end for show secret
+2025-04-15 15:34:18,855 - programm - INFO - open db for get secret
+2025-04-15 15:34:18,857 - programm - INFO - RealDictRow({'secret': 'gAAAAABn_kqJikHIZMWuAAspkU2VL5I80YNUthlaf92tMzpNPiZanFXGAQfEd41hjCyGpflIMmtsAqvQIobipuN0_aXfeI2a7w=='}) this is take out database
+2025-04-15 15:34:18,857 - programm - INFO - end for show secret
+2025-04-15 15:34:21,818 - programm - INFO - open db for get secret
+2025-04-15 15:34:21,819 - programm - INFO - RealDictRow({'secret': 'gAAAAABn_lDYWnLmFFcKFWdhJvssGHKdYyomsmlvgP2wi3GjgR9GucSd9aXPiiHP7xY5972vaau3XO4rCzEczsPNG_9wg3jCsw=='}) this is take out database
+2025-04-15 15:34:21,820 - programm - INFO - end for show secret
+2025-04-15 15:34:58,715 - programm - INFO - open db for get secret
+2025-04-15 15:35:06,952 - programm - INFO - open db for post secret
+2025-04-15 15:35:06,965 - programm - INFO - create secret gAAAAABn_lJ6TWTG0fMo2_N-_zfE9tW4Fjg8_-UPN-aZ1S4DkCEjPZ1bky7x8_baCD_dI932Dy6Fmrme3fjaLEZyPzmeAJlkFQ==
+2025-04-15 15:35:06,966 - programm - INFO - Add secret_hash in data base
+2025-04-15 15:35:10,484 - programm - INFO - open db for get secret
+2025-04-15 15:35:57,335 - programm - INFO - open db for get secret
+2025-04-15 15:36:18,100 - programm - INFO - open db for get secret
+2025-04-15 15:36:18,101 - programm - INFO - None this is take out database
+2025-04-15 15:36:18,101 - programm - WARNING - 3 not found with key
+2025-04-15 15:36:23,248 - programm - INFO - open db for get secret
+2025-04-15 15:36:23,249 - programm - INFO - RealDictRow({'secret': 'gAAAAABn_lDYWnLmFFcKFWdhJvssGHKdYyomsmlvgP2wi3GjgR9GucSd9aXPiiHP7xY5972vaau3XO4rCzEczsPNG_9wg3jCsw=='}) this is take out database
+2025-04-15 15:36:23,251 - programm - INFO - end for show secret
+2025-04-15 15:36:26,274 - programm - INFO - open db for get secret
+2025-04-15 15:36:26,275 - programm - INFO - None this is take out database
+2025-04-15 15:36:26,275 - programm - WARNING - 3 not found with key
+2025-04-15 15:36:38,873 - programm - INFO - open db for get secret
+2025-04-15 15:36:38,875 - programm - INFO - RealDictRow({'secret': 'gAAAAABn_lJ6TWTG0fMo2_N-_zfE9tW4Fjg8_-UPN-aZ1S4DkCEjPZ1bky7x8_baCD_dI932Dy6Fmrme3fjaLEZyPzmeAJlkFQ=='}) this is take out database
+2025-04-15 15:36:38,876 - programm - INFO - end for show secret
+2025-04-15 15:36:42,097 - programm - INFO - open db for get secret
+2025-04-15 15:36:42,098 - programm - INFO - None this is take out database
+2025-04-15 15:36:42,098 - programm - WARNING - 2 not found with key
+2025-04-15 15:37:36,731 - programm - INFO - open db for delete secret
+2025-04-15 15:37:36,746 - programm - INFO - delete secret from db
+2025-04-15 15:37:46,466 - programm - INFO - open db for delete secret
+2025-04-15 15:37:46,479 - programm - INFO - delete secret from db
+2025-04-15 15:47:19,293 - programm - INFO - open db for post secret
+2025-04-15 15:47:19,306 - programm - INFO - create secret gAAAAABn_lVX8WwtFbOjQSixy541u26FnaypiZFx5_kIZzLDFEcRGS6mIpwiZhzPLvkujzi3fXaIHrJOia5KTJwlNt47Hv3zMg==
+2025-04-15 15:47:19,307 - programm - INFO - Add secret_hash in data base
+2025-04-15 15:47:22,861 - programm - INFO - open db for get secret
+2025-04-15 15:47:22,862 - programm - INFO - RealDictRow({'secret': 'gAAAAABn_lVX8WwtFbOjQSixy541u26FnaypiZFx5_kIZzLDFEcRGS6mIpwiZhzPLvkujzi3fXaIHrJOia5KTJwlNt47Hv3zMg=='}) this is take out database
+2025-04-15 15:47:22,863 - programm - INFO - end for show secret
+2025-04-15 15:47:26,766 - programm - INFO - open db for delete secret
+2025-04-15 15:47:26,780 - programm - INFO - delete secret from db
+2025-04-15 16:37:53,954 - programm - INFO - HHHHHHHHHHHHHHEEEEEEEEEEEEEELLLLLLLLLLLLLLOOOOOOOOOOOO
+2025-04-15 18:41:02,137 - programm - INFO - open db for post secret
+2025-04-15 18:41:02,150 - programm - INFO - create secret gAAAAABn_n4OmgxNlghPekkM12s9eSakCR3WlH6c6Ufb-HBn5Un7EWzcsKaldNmHZjlzi0XOf9zU0BSAgAz7qFT7ErPEdrzj_g==
+2025-04-15 18:41:02,151 - programm - INFO - Add secret_hash in data base
+2025-04-15 18:41:47,809 - programm - INFO - open db for get secret
+2025-04-15 18:42:41,797 - programm - INFO - open db for get secret
+2025-04-15 18:43:09,128 - programm - INFO - open db for get secret
+2025-04-15 18:43:16,287 - programm - INFO - open db for get secret
+2025-04-15 18:43:21,785 - programm - INFO - open db for get secret
+2025-04-15 18:43:51,772 - programm - INFO - open db for get secret
+2025-04-15 18:44:09,314 - programm - INFO - open db for get secret
+2025-04-15 18:44:36,906 - programm - INFO - open db for get secret
+2025-04-15 18:46:48,180 - programm - INFO - open db for get secret
+2025-04-15 18:48:16,662 - programm - INFO - open db for get secret
+2025-04-15 18:48:51,759 - programm - INFO - open db for get secret
+2025-04-15 18:48:51,760 - programm - INFO - [RealDictRow({'secret': 'gAAAAABn_n4OmgxNlghPekkM12s9eSakCR3WlH6c6Ufb-HBn5Un7EWzcsKaldNmHZjlzi0XOf9zU0BSAgAz7qFT7ErPEdrzj_g==', 'activite_show': False})] this is take out database
+2025-04-15 18:49:50,996 - programm - INFO - open db for get secret
+2025-04-15 18:49:50,998 - programm - INFO - [RealDictRow({'secret': 'gAAAAABn_n4OmgxNlghPekkM12s9eSakCR3WlH6c6Ufb-HBn5Un7EWzcsKaldNmHZjlzi0XOf9zU0BSAgAz7qFT7ErPEdrzj_g==', 'activite_show': False})] this is take out database
+2025-04-15 18:53:22,377 - programm - INFO - open db for get secret
+2025-04-15 18:53:22,378 - programm - INFO - [RealDictRow({'secret': 'gAAAAABn_n4OmgxNlghPekkM12s9eSakCR3WlH6c6Ufb-HBn5Un7EWzcsKaldNmHZjlzi0XOf9zU0BSAgAz7qFT7ErPEdrzj_g==', 'activite_show': False})] this is take out database
+2025-04-15 18:53:50,080 - programm - INFO - open db for get secret
+2025-04-15 18:53:50,081 - programm - INFO - [RealDictRow({'secret': 'gAAAAABn_n4OmgxNlghPekkM12s9eSakCR3WlH6c6Ufb-HBn5Un7EWzcsKaldNmHZjlzi0XOf9zU0BSAgAz7qFT7ErPEdrzj_g==', 'activite_show': False})] this is take out database
+2025-04-15 18:53:50,083 - programm - INFO - end for show secret
+2025-04-15 18:54:26,895 - programm - INFO - open db for get secret
+2025-04-15 18:54:26,897 - programm - INFO - [RealDictRow({'secret': 'gAAAAABn_n4OmgxNlghPekkM12s9eSakCR3WlH6c6Ufb-HBn5Un7EWzcsKaldNmHZjlzi0XOf9zU0BSAgAz7qFT7ErPEdrzj_g==', 'activite_show': False})] this is take out database
+2025-04-15 18:54:26,899 - programm - INFO - end for show secret

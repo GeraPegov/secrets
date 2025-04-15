@@ -1,5 +1,5 @@
 KEY='1UNdvi1NKUpdqFobrklCNDZTlrNARUP9clYAA2nZz5g='
-dbname='mydatabase'
+dbname='postgres'
 user='postgres'
 password='2710'
 host='localhost'
