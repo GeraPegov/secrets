@@ -1,6 +1,6 @@
 KEY='1UNdvi1NKUpdqFobrklCNDZTlrNARUP9clYAA2nZz5g='
-host="postgres"
-port="5432"
-dbname="database"
-user="myname"
-password="mypass"
+host='localhost'
+port=5432
+dbname='postgres'
+user='postgres'
+password='2710'
