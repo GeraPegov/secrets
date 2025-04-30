@@ -1,65 +1,247 @@
-2025-04-29 17:10:36,594 - programm - INFO - Start /secret
-2025-04-29 17:10:36,606 - programm - INFO - Open db for add secret and passphrase in table
-2025-04-29 17:10:36,607 - programm - INFO - Add secret and passphrase in db
-2025-04-29 17:12:06,644 - programm - INFO - Start lifespan
-2025-04-29 17:12:06,645 - programm - INFO - Start clear_cash
-2025-04-29 17:12:06,645 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
-2025-04-29 17:12:06,646 - apscheduler.scheduler - INFO - Added job "shemas_cash" to job store "default"
-2025-04-29 17:12:06,646 - apscheduler.scheduler - INFO - Scheduler started
-2025-04-29 17:12:06,647 - programm - INFO - End clear_cash
-2025-04-29 17:12:09,048 - programm - INFO - Start /secret
-2025-04-29 17:12:09,061 - programm - INFO - Open db for add secret and passphrase in table
-2025-04-29 17:12:09,062 - programm - INFO - Add secret and passphrase in db
-2025-04-29 17:12:09,062 - programm - INFO - 3 new key
-2025-04-29 17:12:09,063 - programm - INFO - Added secret and time in cache
-2025-04-29 17:13:05,560 - programm - INFO - Start /showsecret
-2025-04-29 17:13:05,560 - programm - INFO - Secret show from cache. Update table
-2025-04-29 17:13:47,570 - programm - INFO - Start /showsecret
-2025-04-29 17:13:47,570 - programm - INFO - Open db for get secret
-2025-04-29 17:14:27,580 - programm - INFO - Start lifespan
-2025-04-29 17:14:27,580 - programm - INFO - Start clear_cash
-2025-04-29 17:14:27,581 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
-2025-04-29 17:14:27,581 - apscheduler.scheduler - INFO - Added job "shemas_cash" to job store "default"
-2025-04-29 17:14:27,582 - apscheduler.scheduler - INFO - Scheduler started
-2025-04-29 17:14:27,582 - programm - INFO - End clear_cash
-2025-04-29 17:14:29,642 - programm - INFO - Start /showsecret
-2025-04-29 17:14:29,642 - programm - INFO - Open db for get secret
-2025-04-29 17:15:00,384 - programm - INFO - Start lifespan
-2025-04-29 17:15:00,384 - programm - INFO - Start clear_cash
-2025-04-29 17:15:00,385 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
-2025-04-29 17:15:00,386 - apscheduler.scheduler - INFO - Added job "shemas_cash" to job store "default"
-2025-04-29 17:15:00,386 - apscheduler.scheduler - INFO - Scheduler started
-2025-04-29 17:15:00,386 - programm - INFO - End clear_cash
-2025-04-29 17:15:02,119 - programm - INFO - Start /showsecret
-2025-04-29 17:15:02,120 - programm - INFO - Open db for get secret
-2025-04-29 17:15:02,121 - programm - INFO - Secret show from table. Update table
-2025-04-29 17:15:20,380 - programm - INFO - Start lifespan
-2025-04-29 17:15:20,381 - programm - INFO - Start clear_cash
-2025-04-29 17:15:20,381 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
-2025-04-29 17:15:20,382 - apscheduler.scheduler - INFO - Added job "shemas_cash" to job store "default"
-2025-04-29 17:15:20,382 - apscheduler.scheduler - INFO - Scheduler started
-2025-04-29 17:15:20,383 - programm - INFO - End clear_cash
-2025-04-29 17:15:23,246 - programm - INFO - Start /showsecret
-2025-04-29 17:15:23,247 - programm - INFO - Open db for get secret
-2025-04-29 17:15:23,248 - programm - INFO - Secret show from table. Update table
-2025-04-29 17:15:23,248 - programm - INFO - Update logger-table after update table after show secret from TABLE
-2025-04-29 17:15:55,306 - programm - INFO - Start lifespan
-2025-04-29 17:15:55,306 - programm - INFO - Start clear_cash
-2025-04-29 17:15:55,307 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
-2025-04-29 17:15:55,307 - apscheduler.scheduler - INFO - Added job "shemas_cash" to job store "default"
-2025-04-29 17:15:55,307 - apscheduler.scheduler - INFO - Scheduler started
-2025-04-29 17:15:55,308 - programm - INFO - End clear_cash
-2025-04-29 17:16:01,581 - programm - INFO - Start /showsecret
-2025-04-29 17:16:01,581 - programm - INFO - Open db for get secret
-2025-04-29 17:16:01,582 - programm - INFO - Secret show from table. Update table
-2025-04-29 17:16:01,583 - programm - INFO - Update logger-table after update table after show secret from TABLE
-2025-04-29 17:16:01,585 - programm - INFO - decrupt secret success
-2025-04-29 17:17:06,935 - programm - INFO - Start lifespan
-2025-04-29 17:17:06,935 - programm - INFO - Start clear_cash
-2025-04-29 17:17:06,936 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
-2025-04-29 17:17:06,937 - apscheduler.scheduler - INFO - Added job "shemas_cash" to job store "default"
-2025-04-29 17:17:06,937 - apscheduler.scheduler - INFO - Scheduler started
-2025-04-29 17:17:06,937 - programm - INFO - End clear_cash
-2025-04-29 17:17:08,000 - programm - INFO - Start /delsecret
-2025-04-29 17:17:08,000 - programm - INFO - open db for delete
-2025-04-29 17:17:08,014 - programm - INFO - Delete secret from db
+2025-04-30 11:05:14,621 - programm - INFO - Start /showsecret
+2025-04-30 11:05:14,621 - programm - INFO - Open db for get secret
+2025-04-30 11:05:14,622 - programm - WARNING - 142 not found key
+2025-04-30 11:05:24,672 - programm - INFO - Start /showsecret
+2025-04-30 11:05:24,672 - programm - INFO - Open db for get secret
+2025-04-30 11:05:24,674 - programm - WARNING - 1111 not found key
+2025-04-30 11:08:01,665 - programm - INFO - Start /showsecret
+2025-04-30 11:08:01,665 - programm - INFO - Open db for get secret
+2025-04-30 11:08:01,666 - programm - WARNING - 1111 not found key
+2025-04-30 11:08:05,012 - programm - INFO - Start lifespan
+2025-04-30 11:08:05,012 - programm - INFO - Start clear_cash
+2025-04-30 11:08:05,013 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-30 11:08:05,014 - apscheduler.scheduler - INFO - Added job "shemas_cash" to job store "default"
+2025-04-30 11:08:05,014 - apscheduler.scheduler - INFO - Scheduler started
+2025-04-30 11:08:05,014 - programm - INFO - End clear_cash
+2025-04-30 11:08:10,064 - programm - INFO - Start /showsecret
+2025-04-30 11:08:10,064 - programm - INFO - Open db for get secret
+2025-04-30 11:08:10,066 - programm - WARNING - 1111 not found key
+2025-04-30 12:08:05,020 - apscheduler.executors.default - INFO - Running job "shemas_cash (trigger: interval[1:00:00], next run at: 2025-04-30 12:08:05 MSK)" (scheduled at 2025-04-30 12:08:05.013168+03:00)
+2025-04-30 12:08:05,020 - programm - INFO - Start shemas_cash
+2025-04-30 12:08:05,051 - programm - INFO - Open db in shemas_cash()
+2025-04-30 12:08:05,053 - programm - INFO - Delete 1 id(cache)
+2025-04-30 12:08:05,067 - apscheduler.executors.default - ERROR - Job "shemas_cash (trigger: interval[1:00:00], next run at: 2025-04-30 13:08:05 MSK)" raised an exception
+Traceback (most recent call last):
+  File "D:\проекты\secrets\programm.py", line 60, in shemas_cash
+    if i in cache:
+       ^^^^^^^^^^
+TypeError: unhashable type: 'RealDictRow'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\проекты\secrets\venvsecrets\Lib\site-packages\apscheduler\executors\base.py", line 131, in run_job
+    retval = job.func(*job.args, **job.kwargs)
+  File "D:\проекты\secrets\programm.py", line 63, in shemas_cash
+    raise HTTPException(status_code=404)
+fastapi.exceptions.HTTPException: 404: Not Found
+2025-04-30 12:13:27,977 - programm - INFO - Start lifespan
+2025-04-30 12:13:27,977 - programm - INFO - Start clear_cash
+2025-04-30 12:13:27,978 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-30 12:13:27,979 - apscheduler.scheduler - INFO - Added job "shemas_cash" to job store "default"
+2025-04-30 12:13:27,979 - apscheduler.scheduler - INFO - Scheduler started
+2025-04-30 12:13:27,979 - programm - INFO - End clear_cash
+2025-04-30 12:21:35,272 - programm - INFO - Start lifespan
+2025-04-30 12:21:35,272 - programm - INFO - Start clear_cash
+2025-04-30 12:21:35,273 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-30 12:21:35,273 - apscheduler.scheduler - INFO - Added job "shemas_cash" to job store "default"
+2025-04-30 12:21:35,273 - apscheduler.scheduler - INFO - Scheduler started
+2025-04-30 12:21:35,274 - programm - INFO - End clear_cash
+2025-04-30 18:55:20,556 - programm - INFO - Start lifespan
+2025-04-30 18:55:20,557 - programm - INFO - Start clear_cash
+2025-04-30 18:55:20,558 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-30 18:55:20,559 - apscheduler.scheduler - INFO - Added job "shemas_cash" to job store "default"
+2025-04-30 18:55:20,559 - apscheduler.scheduler - INFO - Scheduler started
+2025-04-30 18:55:20,559 - programm - INFO - End clear_cash
+2025-04-30 18:55:27,635 - programm - INFO - Start /secret
+2025-04-30 18:55:27,650 - programm - INFO - Open db for add secret and passphrase in table
+2025-04-30 18:55:27,663 - programm - INFO - Add secret and passphrase in db
+2025-04-30 18:55:27,663 - programm - INFO - 13 new key
+2025-04-30 18:55:27,665 - programm - INFO - Added secret and time in cache
+2025-04-30 18:55:37,880 - programm - INFO - Start /secret
+2025-04-30 18:55:37,892 - programm - INFO - Open db for add secret and passphrase in table
+2025-04-30 18:55:37,893 - programm - INFO - Add secret and passphrase in db
+2025-04-30 18:55:37,894 - programm - INFO - 14 new key
+2025-04-30 18:55:37,894 - programm - INFO - Added secret and time in cache
+2025-04-30 18:55:40,051 - programm - INFO - Start /showsecret
+2025-04-30 18:55:40,051 - programm - INFO - Secret show from cache. Update table
+2025-04-30 18:55:40,057 - programm - INFO - Update logger-table after update table after show secret from CACHE
+2025-04-30 18:55:44,207 - programm - INFO - Start /showsecret
+2025-04-30 18:55:44,207 - programm - INFO - Secret show from cache. Update table
+2025-04-30 18:55:44,208 - programm - INFO - Update logger-table after update table after show secret from CACHE
+2025-04-30 18:57:02,562 - programm - INFO - Start lifespan
+2025-04-30 18:57:02,562 - programm - INFO - Start clear_cash
+2025-04-30 18:57:02,563 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-30 18:57:02,564 - apscheduler.scheduler - INFO - Added job "shemas_cash" to job store "default"
+2025-04-30 18:57:02,564 - apscheduler.scheduler - INFO - Scheduler started
+2025-04-30 18:57:02,565 - programm - INFO - End clear_cash
+2025-04-30 18:57:04,358 - programm - INFO - Start /showsecret
+2025-04-30 18:57:04,358 - programm - INFO - 14 secret key
+2025-04-30 18:57:04,358 - programm - INFO - Open db for get secret
+2025-04-30 18:57:04,359 - programm - INFO - Secret show from table. Update table
+2025-04-30 18:57:04,360 - programm - INFO - Update logger-table after update table after show secret from TABLE
+2025-04-30 18:57:04,362 - programm - INFO - Decrupt secret success
+2025-04-30 18:57:10,052 - programm - INFO - Start /showsecret
+2025-04-30 18:57:10,052 - programm - INFO - 13 secret key
+2025-04-30 18:57:10,052 - programm - INFO - Open db for get secret
+2025-04-30 18:57:10,054 - programm - INFO - Secret show from table. Update table
+2025-04-30 18:57:10,054 - programm - INFO - Update logger-table after update table after show secret from TABLE
+2025-04-30 18:57:10,055 - programm - INFO - Decrupt secret success
+2025-04-30 18:57:17,699 - programm - INFO - Start lifespan
+2025-04-30 18:57:17,699 - programm - INFO - Start clear_cash
+2025-04-30 18:57:17,700 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-30 18:57:17,701 - apscheduler.scheduler - INFO - Added job "shemas_cash" to job store "default"
+2025-04-30 18:57:17,701 - apscheduler.scheduler - INFO - Scheduler started
+2025-04-30 18:57:17,702 - programm - INFO - End clear_cash
+2025-04-30 18:57:19,583 - programm - INFO - Start /showsecret
+2025-04-30 18:57:19,583 - programm - INFO - Open db for get secret
+2025-04-30 18:57:24,529 - programm - INFO - Start /showsecret
+2025-04-30 18:57:24,529 - programm - INFO - Open db for get secret
+2025-04-30 18:58:56,744 - programm - INFO - Start /secret
+2025-04-30 18:58:56,757 - programm - INFO - Open db for add secret and passphrase in table
+2025-04-30 18:58:56,758 - programm - INFO - Add secret and passphrase in db
+2025-04-30 18:58:56,758 - programm - INFO - 15 new key
+2025-04-30 18:58:56,759 - programm - INFO - Added secret and time in cache
+2025-04-30 18:59:00,117 - programm - INFO - Start /showsecret
+2025-04-30 18:59:00,117 - programm - INFO - Secret show from cache. Update table
+2025-04-30 18:59:00,118 - programm - INFO - Update logger-table after update table after show secret from CACHE
+2025-04-30 18:59:32,299 - programm - INFO - Start lifespan
+2025-04-30 18:59:32,299 - programm - INFO - Start clear_cash
+2025-04-30 18:59:32,300 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-30 18:59:32,301 - apscheduler.scheduler - INFO - Added job "shemas_cash" to job store "default"
+2025-04-30 18:59:32,301 - apscheduler.scheduler - INFO - Scheduler started
+2025-04-30 18:59:32,301 - programm - INFO - End clear_cash
+2025-04-30 18:59:33,715 - programm - INFO - Start /showsecret
+2025-04-30 18:59:33,715 - programm - INFO - 15
+2025-04-30 18:59:33,715 - programm - INFO - Open db for get secret
+2025-04-30 18:59:33,716 - programm - INFO - Secret show from table. Update table
+2025-04-30 18:59:33,717 - programm - INFO - Update logger-table after update table after show secret from TABLE
+2025-04-30 18:59:33,719 - programm - INFO - Decrupt secret success
+2025-04-30 18:59:43,376 - programm - INFO - Start lifespan
+2025-04-30 18:59:43,376 - programm - INFO - Start clear_cash
+2025-04-30 18:59:43,377 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-30 18:59:43,378 - apscheduler.scheduler - INFO - Added job "shemas_cash" to job store "default"
+2025-04-30 18:59:43,378 - apscheduler.scheduler - INFO - Scheduler started
+2025-04-30 18:59:43,379 - programm - INFO - End clear_cash
+2025-04-30 18:59:45,833 - programm - INFO - Start /showsecret
+2025-04-30 18:59:45,833 - programm - INFO - Open db for get secret
+2025-04-30 18:59:49,219 - programm - INFO - Start /secret
+2025-04-30 18:59:49,232 - programm - INFO - Open db for add secret and passphrase in table
+2025-04-30 18:59:49,233 - programm - INFO - Add secret and passphrase in db
+2025-04-30 18:59:49,234 - programm - INFO - 16 new key
+2025-04-30 18:59:49,235 - programm - INFO - Added secret and time in cache
+2025-04-30 18:59:52,451 - programm - INFO - Start /showsecret
+2025-04-30 18:59:52,451 - programm - INFO - Secret show from cache. Update table
+2025-04-30 18:59:52,452 - programm - INFO - Update logger-table after update table after show secret from CACHE
+2025-04-30 19:00:33,933 - programm - INFO - Start /showsecret
+2025-04-30 19:00:33,933 - programm - INFO - Open db for get secret
+2025-04-30 19:00:33,935 - programm - INFO - Secret show from table. Update table
+2025-04-30 19:00:33,935 - programm - INFO - Update logger-table after update table after show secret from TABLE
+2025-04-30 19:00:33,936 - programm - INFO - Decrupt secret success
+2025-04-30 19:00:47,581 - programm - INFO - Start /showsecret
+2025-04-30 19:00:47,581 - programm - INFO - Open db for get secret
+2025-04-30 19:00:48,997 - programm - INFO - Start /showsecret
+2025-04-30 19:00:48,997 - programm - INFO - Open db for get secret
+2025-04-30 19:00:50,105 - programm - INFO - Start /showsecret
+2025-04-30 19:00:50,105 - programm - INFO - Open db for get secret
+2025-04-30 19:01:09,085 - programm - INFO - Start lifespan
+2025-04-30 19:01:09,085 - programm - INFO - Start clear_cash
+2025-04-30 19:01:09,086 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-30 19:01:09,087 - apscheduler.scheduler - INFO - Added job "shemas_cash" to job store "default"
+2025-04-30 19:01:09,087 - apscheduler.scheduler - INFO - Scheduler started
+2025-04-30 19:01:09,087 - programm - INFO - End clear_cash
+2025-04-30 19:01:10,737 - programm - INFO - Start /secret
+2025-04-30 19:01:10,749 - programm - INFO - Open db for add secret and passphrase in table
+2025-04-30 19:01:10,750 - programm - INFO - Add secret and passphrase in db
+2025-04-30 19:01:10,751 - programm - INFO - 17 new key
+2025-04-30 19:01:10,752 - programm - INFO - Added secret and time in cache
+2025-04-30 19:01:13,999 - programm - INFO - Start /showsecret
+2025-04-30 19:01:13,999 - programm - INFO - Secret show from cache. Update table
+2025-04-30 19:01:14,000 - programm - INFO - Update logger-table after update table after show secret from CACHE
+2025-04-30 19:01:15,478 - programm - INFO - Start /showsecret
+2025-04-30 19:01:15,478 - programm - INFO - Open db for get secret
+2025-04-30 19:01:15,479 - programm - INFO - Secret show from table. Update table
+2025-04-30 19:01:15,480 - programm - INFO - Update logger-table after update table after show secret from TABLE
+2025-04-30 19:01:15,481 - programm - INFO - Decrupt secret success
+2025-04-30 19:02:18,941 - programm - INFO - Start /showsecret
+2025-04-30 19:02:18,941 - programm - INFO - Open db for get secret
+2025-04-30 19:02:20,605 - programm - INFO - Start /showsecret
+2025-04-30 19:02:20,605 - programm - INFO - Open db for get secret
+2025-04-30 19:05:14,556 - programm - INFO - Start lifespan
+2025-04-30 19:05:14,556 - programm - INFO - Start clear_cash
+2025-04-30 19:05:14,557 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-30 19:05:14,558 - apscheduler.scheduler - INFO - Added job "shemas_cash" to job store "default"
+2025-04-30 19:05:14,558 - apscheduler.scheduler - INFO - Scheduler started
+2025-04-30 19:05:14,559 - programm - INFO - End clear_cash
+2025-04-30 19:05:17,076 - programm - INFO - Start /showsecret
+2025-04-30 19:05:17,076 - programm - INFO - Open db for get secret
+2025-04-30 19:05:17,077 - programm - INFO - RealDictRow({'secret': 'gAAAAABoEklGbsLbc8SgJOTryln6nQbNzfixe22KHBiU9HbuNIPJDMU9I8RS5LW0seQaVxoYwriqrdcYxawnIabOJ0ryZBqSFA==', 'activity_status': True}) secret.dict
+2025-04-30 19:06:13,670 - programm - INFO - Start /showsecret
+2025-04-30 19:06:13,670 - programm - INFO - Open db for get secret
+2025-04-30 19:06:13,671 - programm - INFO - RealDictRow({'secret': 'gAAAAABoEklGbsLbc8SgJOTryln6nQbNzfixe22KHBiU9HbuNIPJDMU9I8RS5LW0seQaVxoYwriqrdcYxawnIabOJ0ryZBqSFA==', 'activity_status': True}) secret.dict
+2025-04-30 19:07:04,119 - programm - INFO - Start lifespan
+2025-04-30 19:07:04,119 - programm - INFO - Start clear_cash
+2025-04-30 19:07:04,119 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-30 19:07:04,120 - apscheduler.scheduler - INFO - Added job "shemas_cash" to job store "default"
+2025-04-30 19:07:04,120 - apscheduler.scheduler - INFO - Scheduler started
+2025-04-30 19:07:04,121 - programm - INFO - End clear_cash
+2025-04-30 19:07:05,448 - programm - INFO - Start /showsecret
+2025-04-30 19:07:05,448 - programm - INFO - Open db for get secret
+2025-04-30 19:07:05,450 - programm - INFO - [RealDictRow({'secret': 'gAAAAABoEklGbsLbc8SgJOTryln6nQbNzfixe22KHBiU9HbuNIPJDMU9I8RS5LW0seQaVxoYwriqrdcYxawnIabOJ0ryZBqSFA==', 'activity_status': True})] secret.dict
+2025-04-30 19:07:17,602 - programm - INFO - Start lifespan
+2025-04-30 19:07:17,602 - programm - INFO - Start clear_cash
+2025-04-30 19:07:17,603 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-30 19:07:17,603 - apscheduler.scheduler - INFO - Added job "shemas_cash" to job store "default"
+2025-04-30 19:07:17,604 - apscheduler.scheduler - INFO - Scheduler started
+2025-04-30 19:07:17,604 - programm - INFO - End clear_cash
+2025-04-30 19:07:21,639 - programm - INFO - Start /showsecret
+2025-04-30 19:07:21,640 - programm - INFO - Open db for get secret
+2025-04-30 19:07:21,641 - programm - INFO - [RealDictRow({'secret': 'gAAAAABoEklGbsLbc8SgJOTryln6nQbNzfixe22KHBiU9HbuNIPJDMU9I8RS5LW0seQaVxoYwriqrdcYxawnIabOJ0ryZBqSFA==', 'activity_status': True})] secret.dict
+2025-04-30 19:07:21,641 - programm - INFO - secret WQE
+2025-04-30 19:07:41,524 - programm - INFO - Start lifespan
+2025-04-30 19:07:41,524 - programm - INFO - Start clear_cash
+2025-04-30 19:07:41,525 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-30 19:07:41,526 - apscheduler.scheduler - INFO - Added job "shemas_cash" to job store "default"
+2025-04-30 19:07:41,526 - apscheduler.scheduler - INFO - Scheduler started
+2025-04-30 19:07:41,527 - programm - INFO - End clear_cash
+2025-04-30 19:07:42,704 - programm - INFO - Start /showsecret
+2025-04-30 19:07:42,704 - programm - INFO - Open db for get secret
+2025-04-30 19:07:42,706 - programm - INFO - [RealDictRow({'secret': 'gAAAAABoEklGbsLbc8SgJOTryln6nQbNzfixe22KHBiU9HbuNIPJDMU9I8RS5LW0seQaVxoYwriqrdcYxawnIabOJ0ryZBqSFA==', 'activity_status': True})] secret.dict
+2025-04-30 19:07:42,706 - programm - INFO - secret WQE
+2025-04-30 19:07:42,706 - programm - INFO - secret WQE
+2025-04-30 19:07:42,706 - programm - INFO - Secret show from table. Update table
+2025-04-30 19:07:42,706 - programm - INFO - Update logger-table after update table after show secret from TABLE
+2025-04-30 19:07:42,710 - programm - INFO - Decrupt secret success
+2025-04-30 19:07:59,769 - programm - INFO - Start lifespan
+2025-04-30 19:07:59,769 - programm - INFO - Start clear_cash
+2025-04-30 19:07:59,770 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-30 19:07:59,771 - apscheduler.scheduler - INFO - Added job "shemas_cash" to job store "default"
+2025-04-30 19:07:59,771 - apscheduler.scheduler - INFO - Scheduler started
+2025-04-30 19:07:59,772 - programm - INFO - End clear_cash
+2025-04-30 19:08:13,227 - programm - INFO - Start /showsecret
+2025-04-30 19:08:13,227 - programm - INFO - Open db for get secret
+2025-04-30 19:08:13,229 - programm - INFO - Secret show from table. Update table
+2025-04-30 19:08:13,229 - programm - INFO - Update logger-table after update table after show secret from TABLE
+2025-04-30 19:08:13,232 - programm - INFO - Decrupt secret success
+2025-04-30 19:08:21,079 - programm - INFO - Start lifespan
+2025-04-30 19:08:21,079 - programm - INFO - Start clear_cash
+2025-04-30 19:08:21,080 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-30 19:08:21,080 - apscheduler.scheduler - INFO - Added job "shemas_cash" to job store "default"
+2025-04-30 19:08:21,080 - apscheduler.scheduler - INFO - Scheduler started
+2025-04-30 19:08:21,081 - programm - INFO - End clear_cash
+2025-04-30 19:08:22,565 - programm - INFO - Start /showsecret
+2025-04-30 19:08:22,565 - programm - INFO - Open db for get secret
+2025-04-30 19:08:31,065 - programm - INFO - Start lifespan
+2025-04-30 19:08:31,066 - programm - INFO - Start clear_cash
+2025-04-30 19:08:31,066 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-04-30 19:08:31,067 - apscheduler.scheduler - INFO - Added job "shemas_cash" to job store "default"
+2025-04-30 19:08:31,067 - apscheduler.scheduler - INFO - Scheduler started
+2025-04-30 19:08:31,068 - programm - INFO - End clear_cash
+2025-04-30 19:08:44,447 - programm - INFO - Start /secret
+2025-04-30 19:08:44,460 - programm - INFO - Open db for add secret and passphrase in table
+2025-04-30 19:08:44,461 - programm - INFO - Add secret and passphrase in db
+2025-04-30 19:08:44,461 - programm - INFO - 18 new key
+2025-04-30 19:08:44,462 - programm - INFO - Added secret and time in cache
+2025-04-30 19:09:52,409 - programm - INFO - Start /delsecret
+2025-04-30 19:09:52,409 - programm - INFO - open db for delete
+2025-04-30 19:09:52,423 - programm - INFO - Delete secret from db

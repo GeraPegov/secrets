@@ -9,3 +9,10 @@ class User_add(BaseModel):
 class Detail(BaseModel):
     status_code: int
     detail: str
+
+class Secret(BaseModel):
+    secret_key: int
+
+class Delete(BaseModel):
+    secret_key: int
+    passphrase: str

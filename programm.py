@@ -1,6 +1,6 @@
-from fastapi import FastAPI, HTTPException, Depends, Request, Form, Query
-from fastapi.exceptions import ResponseValidationError
-from fastapi.responses import HTMLResponse
+from fastapi import FastAPI, HTTPException, Depends, Request, Form, Query, Response
+from fastapi.exceptions import ResponseValidationError, ValidationException
+from fastapi.responses import HTMLResponse, JSONResponse
 from fastapi.templating import Jinja2Templates
 import logging 
 from log import start_logging
@@ -8,12 +8,14 @@ import psycopg2
 from database import get_db, start_table, init_db
 from passlib.hash import ldap_pbkdf2_sha256
 from cryptography.fernet import Fernet
-from schemas import Detail, User_add
+from cryptography.fernet import InvalidToken
+from schemas import Detail, User_add, Secret, Delete
 import toml
 import os 
 from apscheduler.schedulers.background import BackgroundScheduler
 import time
 from datetime import datetime
+
 
 #Инициализация логирования
 start_logging()
@@ -68,18 +70,22 @@ def clear_cash():
     scheduler.start()
     logger.info(f'End clear_cash')
 
-
 def startup():
     init_db()
     logger.info('Start lifespan')
     clear_cash()
-
 #Инициализация FastAPI
 app = FastAPI(
     title='Одноразовые секреты',
     description='Приложение для хранения секретов',
     version='1.0.0',
 )
+# Функция для добавления заголовков запрета кеширования
+def add_no_cache_headers(response: Response):
+    response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
+    response.headers["Pragma"] = "no-cache"
+    response.headers["Expires"] = "0"
+    return response
 app.add_event_handler('startup', startup)
 #Передача шаблона html 
 @app.get("/", response_class=HTMLResponse)
@@ -87,12 +93,12 @@ def read_form(request: Request):
     return templates.TemplateResponse("form.html", {"request": request})
 
 @app.post('/secret')
-def add_secret(
+async def add_secret(
     secret: str = Form(...), 
     passphrase: str = Form(...), 
     request: Request = None, 
     conn = Depends(get_db)
-    ):
+    ) -> int:
     """
     Обработка данных пользователя. HTML сохраняет данные secret и passphrase и вынимает их из запроса.
     Хэшируем пароль, шифруем данные и заносим в базу данных и кэш, присваивая им секретный ключ(id), который
@@ -101,12 +107,12 @@ def add_secret(
     logger.info('Start /secret')
     try:
         #Так как вынимаем из формы значения мы отдельно добавляем их в класс Pydantic
-        User_add(secret=secret, passphrase=passphrase)
+        info_of_user = User_add(secret=secret, passphrase=passphrase)
         ip_client = get_client_ip(request)
         #Пароль хэшируем без возможности посмотреть его значение
-        pass_hash = ldap_pbkdf2_sha256.hash(passphrase)
+        pass_hash = ldap_pbkdf2_sha256.hash(info_of_user.passphrase)
         #Секрет шифруем с помощью нашего кода шифрования, чтобы потом расшифровать и выдать по запросу
-        secret_hash = cipher.encrypt(secret.encode()).decode()
+        secret_hash = cipher.encrypt(info_of_user.secret.encode()).decode()
         logger.info(f'Open db for add secret and passphrase in table')
         #Добавляем секрет(secret), пароль(passphrase), айпи клиента(ip_client) и выдаем секретный ключ(id)
         with conn.cursor() as cursor:
@@ -135,17 +141,18 @@ def add_secret(
             #Кеширование секретного ключа(secret) и времени окончания действия(time), которые пользователь может получить в течении 10 минут
             cache[new_key] = {"secret": secret_hash, 'time': time.time()+600}
             logger.info(f'Added secret and time in cache')
-            return new_key
+            response = JSONResponse(content={'secret_key':new_key})
+            return add_no_cache_headers(response)
     except psycopg2.Error as e:
         conn.rollback()
         raise HTTPException(status_code=400)
 
 @app.get('/showsecret')
-def show_secret(
+async def show_secret(
     secret_key: int = Query(...), 
     conn = Depends(get_db), 
     request: Request = None
-    ):
+    ) -> str:
     """
     Выдача секрета по секретному ключу и паролю. Сначала проверяется доступен ли
     секрет в кеше(отправляем пользователю и удаляем из кеша), обновляем базу данных(секрет просмотрен),
@@ -157,110 +164,124 @@ def show_secret(
     """
     logger.info(f'Start /showsecret')
     try:
-        # Secret(secret_key=secret_key)
+        key = Secret(secret_key=secret_key)
         ip_client = get_client_ip(request)
-        #secret присваивает значение либо из кэша, либо из таблицы
+        # logger.info(key.secret_key)
+        #secret присваивает значение либо из кеша, либо из таблицы
         secret = None
         #Проверка секрета в кеше
-        if secret_key in cache and cache[secret_key]['time'] > time.time():
-            secret = cache[secret_key]['secret']
-            del cache[secret_key]
+        if key.secret_key in cache and cache[key.secret_key]['time'] > time.time():
+            secret = cache[key.secret_key]['secret']
+            del cache[key.secret_key]
             logger.info(f'Secret show from cache. Update table')
-            
-            with conn.cursor() as cursor:    
-                #Обновление времени просмотра(show_secret)
-                #Статуса секрета(просмотрено(True)) 
-                cursor.execute(
-                        """
-                        UPDATE secrets_users 
-                        SET show_secret = NOW(), activite_show = TRUE
-                        WHERE id = %s
-                        """,
-                        (secret_key,)
-                    )
-                #Логирование секрета(secret_key)
-                #Айпи пользователя(ip_user)
-                #Время просмотра(time_reading)
-                logger.info(f'Update logger-table after update table after show secret from CACHE')
-                cursor.execute(
-                        '''
-                        INSERT INTO logger_secrets 
-                        (secret_key, ip_user, time_reading) 
-                        VALUES 
-                        (%s, %s, %s);
-                        ''',
-                        (secret_key, ip_client, datetime.now())
-                    )
-                conn.commit()
+            try:
+                with conn.cursor() as cursor:    
+                    #Обновление времени просмотра(show_secret)
+                    #Статуса секрета(просмотрено(True)) 
+                    cursor.execute(
+                            """
+                            UPDATE secrets_users 
+                            SET show_secret = NOW(), activity_status = TRUE
+                            WHERE id = %s
+                            """,
+                            (key.secret_key,)
+                        )
+                    #Логирование секрета(secret_key)
+                    #Айпи пользователя(ip_user)
+                    #Время просмотра(time_reading)
+                    logger.info(f'Update logger-table after update table after show secret from CACHE')
+                    cursor.execute(
+                            '''
+                            INSERT INTO logger_secrets 
+                            (secret_key, ip_user, time_reading) 
+                            VALUES 
+                            (%s, %s, %s);
+                            ''',
+                            (key.secret_key, ip_client, datetime.now())
+                        )
+                    conn.commit()
+            except psycopg2.Error as e:
+                conn.rollback()
+                raise HTTPException(status_code=400, detail="Ошибка базы данных")
         #Проверка в таблице секрета если нет в кеше  
         else:
-            with conn.cursor() as cursor:
-                #Вынимаем секрет(secret)
-                #Cтатус секрета(activite_show(True or False))
-                #Проверяем просрочку (last_add > NOW())
-                logger.info(f'Open db for get secret')
-                cursor.execute(
-                    """
-                    SELECT secret, activity_status
-                    FROM secrets_users 
-                    WHERE id = %s and last_add > NOW()
-                    """, 
-                    (secret_key,))
-                secret_dict = cursor.fetchall()
-                #Проверка если нет секрета
-                if not secret_dict: 
-                    logger.warning(f'{secret_key} not found with key')
-                    raise HTTPException(status_code=404, detail="Секрет не найден")
-                #Проверка если значения activity_status=True(просмотрено)
-                if secret_dict[0]['activity_status']:
-                    raise HTTPException(status_code=400, detail='Секрет уже просмотрели')  
-                #show_secret = NOW() (время просмотра секрета)
-                #activite_shpw=True(просмотрено)
-                logger.info(f'Secret show from table. Update table')
-                cursor.execute(
+            try:
+                with conn.cursor() as cursor:
+                    #Вынимаем секрет(secret)
+                    #Cтатус секрета(activite_show(True or False))
+                    #Проверяем просрочку (last_add > NOW())
+                    logger.info(f'Open db for get secret')
+                    cursor.execute(
                         """
-                        UPDATE secrets_users 
-                        SET show_secret = NOW(), activity_status = TRUE
-                        WHERE id = %s
-                        """,
-                        (secret_key,))
-                #Логирование секретного ключа(secret_key)
-                #Айпи пользователя(ip_user) 
-                #Времени просмотра(time_reading)
-                logger.info(f'Update logger-table after update table after show secret from TABLE')
-                cursor.execute(
-                        '''
-                        INSERT INTO logger_secrets 
-                        (secret_key, ip_client, time_reading) 
-                        VALUES 
-                        (%s, %s, %s);
-                        ''',
-                        (secret_key, ip_client, datetime.now()))
-                conn.commit()
-        #Проверка если не нашли секрет
+                        SELECT secret, activity_status
+                        FROM secrets_users 
+                        WHERE id = %s and last_add > NOW()
+                        """, 
+                        (key.secret_key,))
+                    secret_dict = cursor.fetchall()
+                    #Проверка если нет секрета
+                    if not secret_dict: 
+                        logger.warning(f'{key.secret_key} not found key')
+                        raise HTTPException(status_code=404, detail="Секрет не найден")
+                    #Проверка если значения activity_status=True(просмотрено)
+                    if secret_dict[0]['activity_status']:
+                        raise HTTPException(status_code=400, detail='Секрет уже просмотрели')  
+                    #show_secret = NOW() (время просмотра секрета)
+                    #activite_shpw=True(просмотрено)
+                    logger.info(f'Secret show from table. Update table')
+                    cursor.execute(
+                            """
+                            UPDATE secrets_users 
+                            SET show_secret = NOW(), activity_status = TRUE
+                            WHERE id = %s
+                            """,
+                            (key.secret_key,))
+                    #Логирование секретного ключа(secret_key)
+                    #Айпи пользователя(ip_user) 
+                    #Времени просмотра(time_reading)
+                    logger.info(f'Update logger-table after update table after show secret from TABLE')
+                    cursor.execute(
+                            '''
+                            INSERT INTO logger_secrets 
+                            (secret_key, ip_client, time_reading) 
+                            VALUES 
+                            (%s, %s, %s);
+                            ''',
+                            (key.secret_key, ip_client, datetime.now()))
+                    conn.commit()
+            except psycopg2.Error as e:
+                conn.rollback()
+                raise HTTPException(status_code=400, detail="Ошибка базы данных")
+        #Проверка если секрета нет в кэше
         if not secret:
             secret = secret_dict[0]['secret']
         #Расшифровка секрета
         try:
             #secret присвоил значение секрета из кеша или таблицы
             original_secret =  cipher.decrypt(secret).decode()
-            logger.info(f'decrupt secret success')
-            return original_secret
+            logger.info(f'Decrupt secret success')
+            response = JSONResponse(content={'secret':original_secret})
+            return add_no_cache_headers(response)
+        except TypeError as e:
+            logger.info(f'Type secret is not bytes')
+            raise HTTPException(detail='Ошибка сервера')
+        except InvalidToken as e:
+            logger.info(f'Not key of decrypt')
+            raise HTTPException(status_code=404, detail='Ошибка данных')
         except Exception as e:
-            logger.info(f'decryp secret false')
+            logger.info(f'Decrypt secret false')
             raise HTTPException(
                 status_code=400,
                 detail=f"Ошибка при обработке секрета: {str(e), {secret}}"
-            )       
-    except psycopg2.Error as e:
-        conn.rollback()
-        raise HTTPException(status_code=400)
-    except ValueError as e:
-        raise HTTPException(status_code=400, detail='wrond input')
+            )          
+    except ValidationException as e:
+        raise HTTPException(status_code=422, detail='Некорректный ввод')
+    except Exception as e:
+        raise HTTPException(status_code=400, detail='Неизвестная ошибка')
     
-#обработка удаления секрета по паролю
+#Обработка удаления секрета по паролю
 @app.post('/delsecret')
-def delsecret(
+async def delsecret(
     secret_key: int = Form(...), 
     passphrase: str = Form(...), 
     conn = Depends(get_db), 
@@ -271,6 +292,7 @@ def delsecret(
     По секретному ключу и паролю удаление секрета из базы данных. 
     """
     try:
+        delete = Delete(secret_key=secret_key, passphrase=passphrase)
         ip_client = get_client_ip(request)
         #Вынимаем пароль(passphrase) по секретному ключу(id)
         with conn.cursor() as cursor:
@@ -281,14 +303,14 @@ def delsecret(
                 FROM secrets_users 
                 WHERE id = %s
                 ''', 
-                (secret_key,))
+                (delete.secret_key,))
             password_hash = cursor.fetchone() 
             #Проверка наличия пароля
             if not password_hash:
                 logger.info(f'Not found passphrase')
                 raise HTTPException(status_code=404, detail="Нет пароля или записи в базе данных")
             #Проверка верности пароля 
-            if not ldap_pbkdf2_sha256.verify(passphrase, password_hash['passphrase']):
+            if not ldap_pbkdf2_sha256.verify(delete.passphrase, password_hash['passphrase']):
                 logger.info('password is not verify')
                 raise HTTPException(status_code=403, detail='Неверный пароль')
             #Удаление поля из таблицы по значению секретного ключа(id)
@@ -306,14 +328,18 @@ def delsecret(
                 VALUES 
                 (%s, %s, %s);
                 ''',
-                (secret_key, ip_client, datetime.now()))
+                (delete.secret_key, ip_client, datetime.now()))
             conn.commit()
             logger.info(f'Delete secret from db')
-            return HTTPException(status_code=200, detail='Секрет удален')
+            response = JSONResponse(content={'status': 'secret_deleted'})
+            return add_no_cache_headers(response)
     except ResponseValidationError as e:
         logger.info(f'No hash {password_hash['passphrase']} and {passphrase}')
-        raise HTTPException(status_code=404, detail='Warning password')
+        raise HTTPException(status_code=404, detail='Неверный пароль')
     except Exception as e:
         logger.info(f'WARNING HASH')
-        raise HTTPException(status_code=400, detail='Bad Request')
+        raise HTTPException(status_code=400, detail='Неизвестная ошибка')
+    except psycopg2.Error as e:
+                conn.rollback()
+                raise HTTPException(status_code=400, detail="Ошибка базы данных")
     
