@@ -1,4 +1,4 @@
-from database import start_table
+from database.database import start_table
 from datetime import datetime, timedelta
 examples_secret = 'my secret'
 examples_passphrase = 'my passphrase'
