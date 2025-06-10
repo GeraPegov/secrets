@@ -1,22 +1,22 @@
-import os 
-
-from fastapi import FastAPI, HTTPException, Depends, Request, Form, Query, Response
-from fastapi.exceptions import ResponseValidationError, ValidationException
-from fastapi.responses import HTMLResponse, JSONResponse
-from fastapi.templating import Jinja2Templates
-import logging 
-import psycopg2
-from passlib.hash import ldap_pbkdf2_sha256
-
-from apscheduler.schedulers.background import BackgroundScheduler
+import logging
+import os
 import time
 from datetime import datetime
 
-from log import start_logging
-from schemas import Detail, User_add, Secret, Delete
-from main.encrypt_info import CreateHash, CreateEncrypt
+import psycopg2
+from apscheduler.schedulers.background import BackgroundScheduler
+from fastapi import (Depends, FastAPI, Form, HTTPException, Query, Request,
+                     Response)
+from fastapi.exceptions import ResponseValidationError, ValidationException
+from fastapi.responses import HTMLResponse, JSONResponse
+from fastapi.templating import Jinja2Templates
+from passlib.hash import ldap_pbkdf2_sha256
+
 from database.task import AddDatabase, AddLogger
-from main.dependencies import get_encrypt, get_hasher, get_db, get_log
+from log import start_logging
+from main.dependencies import get_db, get_encrypt, get_hasher, get_log
+from main.encrypt_info import CreateEncrypt, CreateHash
+from schemas import Delete, Detail, Secret, User_add
 
 #Инициализация логирования
 start_logging()
@@ -103,16 +103,16 @@ async def add_secret(
     """
     logger.info('Start /secret')
     try:
-        #Так как вынимаем из формы значения мы отдельно добавляем их в класс Pydantic
+        # Так как вынимаем из формы значения мы отдельно добавляем их в класс Pydantic
         info_of_user = User_add(secret=secret, passphrase=passphrase)
-        #ХЭширование пароля и шифрование данных
+        # ХЭширование пароля и шифрование данных
         result_hash = create_hash.create_hash(info_of_user.passphrase)
         result_encrypt = create_encrypt.create_encrypt(info_of_user.secret)
         logger.info(f'{result_encrypt, result_hash}, result')
-        #находим айпи клиента
+        # находим айпи клиента
         ip_client = get_client_ip(request)
         logger.info(f'{ip_client}, ip_client')
-        #Добавляем секрет(secret), пароль(passphrase), айпи клиента(ip_client) и выдаем секретный ключ(id)
+        # Добавляем секрет(secret), пароль(passphrase), айпи клиента(ip_client) и выдаем секретный ключ(id)
         new_key = add_db.get_key(
             result_encrypt=result_encrypt, 
             result_hash=result_hash, 

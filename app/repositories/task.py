@@ -1,13 +1,13 @@
-from fastapi import Depends
 from datetime import datetime
+
+from fastapi import Depends
 
 from database.database import get_db
 
+
 class AddDatabase():
 
-    def get_key(self, result_encrypt, result_hash, ip_client, conn = Depends(get_db)):
-        print('hello')
-        #возможно не дает напрямую использовать get_db и нужен блок with 
+    def get_key(self, result_encrypt, result_hash, ip_client, conn=Depends(get_db)):
         cursor = conn.cursor()
         cursor.execute(
             """INSERT INTO secrets_users 
@@ -20,6 +20,7 @@ class AddDatabase():
         new_key = conn.cursor.fetchone()['id']
         conn.commit()
         return new_key
+
 
 class AddLogger():
     def add_log(self, new_key, ip_client, conn = Depends(get_db)):

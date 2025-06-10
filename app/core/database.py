@@ -1,30 +1,22 @@
 from contextlib import contextmanager
+
 import psycopg2
-from psycopg2.extras import RealDictCursor
 from fastapi import HTTPException
-import toml
-import os
+from psycopg2.extras import RealDictCursor
 
-config_path = os.environ.get("CONFIG_PATH", "config.toml")
-with open(config_path) as f:  
-    data = toml.load(f)
+from app.core.config import settings
 
-DB_NAME = os.environ.get("POSTGRES_DB", data.get('dbname'))
-DB_USER = os.environ.get("POSTGRES_USER", data.get('user'))
-DB_PASSWORD = os.environ.get("POSTGRESS_PASSWORD", data.get('password'))
-DB_HOST = os.environ.get("POSTGRES_HOST", data.get('host'))
-DB_PORT = os.environ.get("POSTGRES_PORT", data.get('port'))
 
 @contextmanager
 def start_table():
     conn = None
     try:
         conn = psycopg2.connect(
-            dbname=DB_NAME,
-            user=DB_USER, 
-            password=DB_PASSWORD,
-            host=DB_HOST, 
-            port=DB_PORT, 
+            dbname=settings.POSTGRES_DB,
+            user=settings.POSTGRES_USER,
+            password=settings.POSTGRES_PASSWORD,
+            host=settings.POSTGRES_HOST,
+            port=settings.POSTGRES_PORT,
             client_encoding='utf8',
             cursor_factory=RealDictCursor
         )
