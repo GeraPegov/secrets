@@ -1,4 +1,5 @@
-import redis 
+import redis
+
 
 def start_redis():
     r = redis.Redis(

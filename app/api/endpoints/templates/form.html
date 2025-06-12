@@ -16,7 +16,7 @@
         <button type="submit">Отправить</button>
     </form>
     <h2>Форма для получения секрета</h2>
-    <form action="/showsecret" method="get">
+    <form action="/secret/viewing" method="get">
         <div>
             <label for="secret_key">Укажите уникальный ключ:</label>
             <textarea id="secret_key" name="secret_key" required></textarea>
@@ -24,7 +24,7 @@
         <button type="submit">Отправить</button>
     </form>
     <h3>Форма для удаления секрета</h3>
-    <form action="/delsecret" method="post">
+    <form action="/secret/delete" method="post">
         <div>
             <label for="secret_key">Укажите уникальный ключ:</label>
             <textarea id="secret_key" name="secret_key" required></textarea>

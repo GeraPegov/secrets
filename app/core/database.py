@@ -27,9 +27,11 @@ def start_table():
         if conn:
             conn.close()
 
+
 def get_db():
     with start_table() as conn:
         yield conn
+
 
 def init_db():
     with start_table() as conn:

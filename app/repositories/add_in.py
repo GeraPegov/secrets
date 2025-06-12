@@ -1,6 +1,7 @@
 from datetime import datetime
-from redis import RedisError
+
 from fastapi import HTTPException
+from redis import RedisError
 
 
 class AddDatabase():
@@ -38,13 +39,13 @@ class AddLogger():
             (new_key, ip_client, datetime.now()))
         self.conn.commit()
         return True
-    
+
 
 class CreateCache():
     def __init__(self, connection):
         self.r = connection
 
-    def add_cache(self, key, secret, passphrase, ttl:int = 3600):
+    def create_cache(self, key, secret, passphrase, ttl: int = 3600):
         try:
             pipeline = self.r.pipeline()
             pipeline.hset(key, mapping={
@@ -56,4 +57,3 @@ class CreateCache():
             return True
         except RedisError as e:
             HTTPException(400, f"Ошибка кеширования: {str(e)}")
-
