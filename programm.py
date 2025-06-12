@@ -12,15 +12,16 @@ from fastapi.responses import HTMLResponse, JSONResponse
 from fastapi.templating import Jinja2Templates
 from passlib.hash import ldap_pbkdf2_sha256
 
-from database.task import AddDatabase, AddLogger
+from app.dependencies.dependencies import (get_db, get_encrypt, get_hasher,
+                                           get_log)
+from app.repositories.task import AddDatabase, AddLogger
+from app.services.encrypt import CreateEncrypt, CreateHash
+from app.shemas.schemas import Delete, Detail, Secret, User_add
 from log import start_logging
-from main.dependencies import get_db, get_encrypt, get_hasher, get_log
-from main.encrypt_info import CreateEncrypt, CreateHash
-from schemas import Delete, Detail, Secret, User_add
 
 #Инициализация логирования
 start_logging()
-logger =logging.getLogger(__name__)
+logger = logging.getLogger(__name__)
 
 #Сохранение IP клиента 
 def get_client_ip(request: Request) -> str:
