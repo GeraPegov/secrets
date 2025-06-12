@@ -1,6 +1,11 @@
-from app.repositories.task import AddDatabase, AddLogger
-from app.services.encrypt import CreateEncrypt
+from fastapi import Depends
+
+from app.repositories.add_in import AddDatabase, AddLogger
+from app.services.encrypt import EncryptManager
 from app.services.hash import CreateHash
+from app.repositories.add_in import CreateCache
+from app.core.redis import start_redis
+from app.core.database import get_db
 
 
 def get_hasher():
@@ -8,12 +13,16 @@ def get_hasher():
 
 
 def get_encrypt():
-    return CreateEncrypt()
+    return EncryptManager()
 
 
 def get_db():
-    return AddDatabase()
+    return AddDatabase(get_db)
 
 
 def get_log():
-    return AddLogger()
+    return AddLogger(get_db)
+
+
+def get_cache(connect = Depends(start_redis)):
+    return CreateCache(connect)
